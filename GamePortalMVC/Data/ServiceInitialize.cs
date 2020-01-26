@@ -19,7 +19,7 @@ namespace GamePortalMVC.Data
         
         public ServiceInitialize(DbAuthContext context)
         {
-            _context = context; //context
+            _context = context; //context1
         }
     }
     

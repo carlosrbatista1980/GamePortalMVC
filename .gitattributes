@@ -4,6 +4,12 @@
 * text=auto
 
 ###############################################################################
+# Github uses "Linguist library" to determines which language the project
+# its been written, but in some cases it's not useful and the wrong language is show
+###############################################################################
+* linguist-vendored
+*.js linguist-vendored=false
+###############################################################################
 # Set default behavior for command prompt diff.
 #
 # This is need for earlier builds of msysgit that does not have it on by
