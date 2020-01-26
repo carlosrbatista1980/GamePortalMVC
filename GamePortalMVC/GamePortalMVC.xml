@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GamePortalMVC</name>
+    </assembly>
+    <members>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.IRepository`1.GetAll">
+            <summary>
+            Gets all records from a entity
+            </summary> 
+            <returns>IQuerable</returns>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.IRepository`1.GetAllWhere(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Gets all records from a entity filtering by a condition.
+            </summary>
+            <example>
+                Ex: var records = GetAllWhere(x => x.Id == 1)  returns all records where Id is equal to 1
+            </example> 
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.IRepository`1.GetEntityById(System.Int32)">
+            <summary>
+            Gets an entity by Id
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.IRepository`1.Insert(`0)">
+            <summary>
+            Adds an entity to a "list" to be saved for SaveChanges() or Save().
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.IRepository`1.Delete(`0)">
+            <summary>
+            Remove a record from a entity
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.IRepository`1.Update(`0,System.Boolean)">
+            <summary>
+            commit all changes added on database
+            </summary>
+            <param name="success"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.Repository`1.GetAll">
+            <summary>
+            Gets all records from a entity
+            </summary> 
+            <returns>IQuerable</returns>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.Repository`1.GetAllWhere(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Gets all records from a entity filtering by a condition. (you can also use GetAll().Where(x => x.Id != 0) but, you will trigger 2 actions, GetAll() and Where filter)
+            Using GetAllWhere you will trigger just one action, its much more faster.
+            </summary>
+            <example>
+                Ex: var records = GetAllWhere(x => x.Id == 1)  returns all records where Id is equal to 1
+            </example> 
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.Repository`1.Insert(`0)">
+            <summary>
+            Adds an entity to be saved but, its not exists on database yet.
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.Repository`1.Delete(`0)">
+            <summary>
+            Remove an entity from database and commits its changes.
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.Repository`1.GetEntityById(System.Int32)">
+            <summary>
+            Gets an entity by Id
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GamePortalMVC.Data.Repositories.Interfaces.Repository`1.Update(`0,System.Boolean)">
+            <summary>
+            Commits all changes added on database
+            </summary>
+            <param name="CommitAllChangesOnSuccess"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

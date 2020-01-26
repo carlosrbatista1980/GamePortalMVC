@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @Html.Partial("_Head")
+</head>
+<body>
+<header>
+    @Html.Partial("_TopMenu");
+</header>
+<div class="main" class="pb-3">
+    <div class="container" style="min-height: 768px">
+        <partial name="_CookieConsentPartial"/>
+        <main role="main" >
+            @RenderBody()
+        </main>
+    </div>
+</div>
+
+@Html.Partial("_Footer");
+
+@Html.Partial("_ScriptsEndOfPage");
+    
+@RenderSection("Scripts", required: false)
+</body>
+</html>

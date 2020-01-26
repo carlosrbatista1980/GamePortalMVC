@@ -1,0 +1,173 @@
+﻿@model GamePortalMVC.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+<!-- container -->
+<div class="container">
+
+    <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Registration</li>
+    </ol>
+
+    <div class="row">
+
+        <!-- Article main content -->
+        <article class="col-xs-12 maincontent">
+            <header class="page-header">
+                <h1 class="page-title">
+                    Registration
+                </h1>
+
+                @if (ViewData["Error"] != null)
+                {
+                    <div class="alert alert-danger" id="error-alert">
+                        <p><strong>Error:</strong> @ViewData["Error"]</p>
+                    </div>
+                }
+                @if (ViewData["Success"] != null)
+                {
+                    <div class="alert alert-success" id="success-alert">
+                        <p><strong>Success:</strong> @ViewData["Success"]</p>
+                    </div>
+                }
+
+            </header>
+            
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="thin text-center">Register a new account</h3>
+                        <p class="text-center text-muted">If you already has an account just click, <a asp-controller="Login" asp-action="Login"><span class="badge badge-info">Login</span></a> to proceed.</p>
+                        <hr>
+                        
+                        <form asp-action="SignUp" asp-controller="Login" name="form1" id="form1">
+                            <div class="top-margin">
+                                <label><i class="fas fa-user"></i> Account</label>
+                                <input type="text" class="form-control" asp-for="@Model.account" placeholder="Account" name="account" id="account" value="@Model?.account">
+                                <span class="alert-danger">@Html.ValidationMessageFor(validation => validation.account)</span>
+                            </div>
+                            <div class="top-margin">
+                                <label><i class="fas fa-at"></i> Email Address<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" asp-for="@Model.email" placeholder="email" name="email" id="email" value="@Model?.email">
+                                <span class="alert-danger">@Html.ValidationMessageFor(validation => validation.email)</span>
+                            </div>
+
+                            <div class="row top-margin">
+                                <div class="col-sm-6">
+                                    <label><i class="fas fa-key"></i> Password <span class="text-danger">*</span></label>
+                                    <input type="password" class="form-control" asp-for="@Model.password" placeholder="password" name="password" id="password" value="@Model?.password">
+                                    <span class="alert-danger">@Html.ValidationMessageFor(validation => validation.password)</span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label><i class="fas fa-key"></i> Confirm Password <span class="text-danger">*</span></label>
+                                    <input type="password" class="form-control" asp-for="@Model.confirmedpassword" name="confirmedpassword" id="confirmedpassword" value="@Model?.confirmedpassword">
+                                    <span class="alert-danger">@Html.ValidationMessageFor(validation => validation.confirmedpassword)</span>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="termsandconditions" id="termsandconditions" checked="@Model?.termsandconditions">
+                                        I've read the <a asp-controller="Login" asp-action="TermsAndConditions">Terms and Conditions</a>
+                                    </label>
+                                </div>
+                                <div class="col-lg-4 text-right">
+                                    <input type="hidden" asp-for="@Model.dateRegisterCreated" name="dateregistercreated" id="dateregistercreated" value="@Model?.dateRegisterCreated"/>
+                                    <!--<button class="btn btn-action" type="submit" onclick="Validate()">Register</button>-->
+                                    <button class="btn btn-action" type="submit">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </article>
+        <!-- /Article -->
+
+    </div>
+</div>	<!-- /container -->
+
+<!-- Validation scripts -->
+<script>
+    @section  Scripts {
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    }
+</script>
+
+
+@*
+<script>
+    function Validate() {
+        $.ajax(
+            {
+                type: "POST",
+                url: '@Url.Action("SignUp", "Login")',
+                data: {
+                    account: $('#account').val(),
+                    email: $('#email').val(),
+                    password: $('#password').val(),
+                    confirmedpassword: $('#confirmedpassword').val(),
+                    termsandconditions: $('#termsandconditions').val(),
+                    datepassword: $('#datepassword').val(),
+                },
+                error: function (result) {
+                    alert("There is a Problem, Try Again!");
+                },
+                success: function (result) {
+                    console.log(result);
+                    if (result.status == true) {
+                        window.location.href = '@Url.Action("Register", "Login")';
+                    }
+                    else {
+                        alert(result.message);
+                    }
+                }
+            });
+    }
+</script>
+    -->
+
+@*
+
+
+    <body>
+        <div class="page-wrapper p-t-10 p-b-10 font-poppins">
+            <div class="wrapper wrapper--w780">
+                <div class="card card-3">
+                    <div class="card-heading"></div>
+                    <div class="card-body">
+                        <h2 class="title">Registration Info</h2>
+                        <form asp-action="CreateAccount" method="post">
+                            <div class="input-group">
+                                <input class="input--style-3" type="text" asp-for="account" placeholder="Account" name="account">
+                            </div>
+
+                            <div class="input-group">
+                                <input class="input--style-3" type="email" asp-for="email" placeholder="Email" name="email">
+                            </div>
+
+                            <div class="input-group">
+                                <input class="input--style-3" type="password" asp-for="password" placeholder="Password" name="password">
+                            </div>
+
+                            <div class="input-group">
+                                <input class="input--style-3" type="password" placeholder="Repeat Password" name="password">
+                            </div>
+
+                            <div class="p-t-10">
+                                <button class="btn btn--pill btn--green" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+*@
